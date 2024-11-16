@@ -1,0 +1,30 @@
+version: "3"
+services:
+  pokemon:
+    # image: pokemon
+    build: .
+    container_name: pokemon-container
+    ports:
+      - "80:80"
+      - "27017:27017"
+      - "8888:8888"
+      - "888:888"
+      - "39081:39081"
+      - "39981:39981"
+      - "81:81"
+      - "16666:16666"
+      - "18080:18080"
+      - "1104:1104"
+      - "1144:1144"
+      # game.dev.1 服务器，IP:18080/servers
+      - "28879:28879"
+    volumes:
+      - game-server-volume:/mnt
+      - wwwroot-volume:/wwwroot
+    environment:
+      # passed by start script
+      - HOST_IP=${HOST_IP}
+      - SERVER_NAME=${SERVER_NAME}
+volumes:
+  game-server-volume:
+  wwwroot-volume:
